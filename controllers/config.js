@@ -24,7 +24,7 @@ pool.connect((err) => {
     console.log('Connected to database');
   
     // SQL command to create the table
-    const createTableQuery = `
+    const createSubscribersTableQuery = `
       CREATE TABLE IF NOT EXISTS Subscribers (
         id INT AUTO_INCREMENT PRIMARY KEY,
         email VARCHAR(255) NOT NULL UNIQUE, 
@@ -49,7 +49,7 @@ pool.connect((err) => {
 `;
   
     // Execute the SQL command to create the subscribers table
-    pool.query(createTableQuery, (error, results, fields) => {
+    pool.query(createSubscribersTableQuery, (error, results, fields) => {
       if (error) { 
         console.error('Error creating table:', error);
       }
