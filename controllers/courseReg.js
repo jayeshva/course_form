@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
+const bodyParser = require('body-parser');
 const pool = require('./config');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-
+const fs = require('fs');
+const path = require('path');
 
 router.get('/', function (req, res, next) {
     res.json({ message: 'Welcome to the course BT API' });

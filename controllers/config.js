@@ -3,7 +3,7 @@ const mysql = require('mysql2');
 const pool = mysql.createConnection({
     host: 'localhost',
     user: 'thebette_forms_app',
-    password: 'Better@7005',
+    password: 'Better@7005', // If there's no password, leave this empty
     database: 'thebette_forms',
     port:3306
 });
@@ -27,13 +27,13 @@ pool.connect((err) => {
     const createTableQuery = `
       CREATE TABLE IF NOT EXISTS Subscribers (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        email VARCHAR(255) NOT NULL UNIQUE, 
+        email VARCHAR(255) NOT NULL UNIQUE,
         subscribed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
     `;
 
      // SQL command to create the user table
-  const createOnlineCoursesTableQuery = `
+  const createUserTableQuery = `
   CREATE TABLE IF NOT EXISTS OnlineCourses (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
@@ -60,7 +60,7 @@ pool.connect((err) => {
     });
 
     // Execute the SQL command to create the course registration table
-    pool.query(createOnlineCoursesTableQuery, (error, results, fields) => {
+    pool.query(createUserTableQuery, (error, results, fields) => {
       if (error) { 
         console.error('Error creating table:', error);
       }
